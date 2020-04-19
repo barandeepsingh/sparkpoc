@@ -75,8 +75,6 @@ docs/.jekyll-metadata
 
 # For Hive
 TempStatsStore/
-metastore/
-metastore_db/
 sql/hive-thriftserver/test_warehouses
 warehouse/
 spark-warehouse/
