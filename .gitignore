@@ -84,3 +84,5 @@ spark-warehouse/
 
 # For SBT
 .jvmopts
+/metastore_db/
+/project/
