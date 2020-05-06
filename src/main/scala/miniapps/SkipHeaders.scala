@@ -8,7 +8,7 @@ import org.apache.spark.sql.functions.{lit, row_number}
 object SkipHeaders extends App {
   val spark = SparkSession.builder().appName("SkipHeaders").master("local[*]").getOrCreate()
 
-  spark.sparkContext.setLogLevel("FATAL")
+  spark.sparkContext.setLogLevel("ERROR")
 
   val myDs = spark.read.csv("/Users/baran/Documents/spark-data/test_headers.csv")
 
