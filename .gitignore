@@ -78,8 +78,7 @@ TempStatsStore/
 sql/hive-thriftserver/test_warehouses
 warehouse/
 spark-warehouse/
-
-
+twitter-api.txt
 # For SBT
 .jvmopts
 /metastore_db/
