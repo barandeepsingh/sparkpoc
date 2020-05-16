@@ -12,7 +12,7 @@ object OlympicsAnalyticsApp extends App {
   import spark.implicits._
 
   //Change it to the base dir where you keep the file
-  val baseDirPath = "/Users/baran/Documents/spark-data/"
+  val baseDirPath = "spark-data/"
   val readFilePath = baseDirPath + "olympics.csv"
   val exportFileDir = baseDirPath + "olympics_report"
   //Read CSV into DataSet

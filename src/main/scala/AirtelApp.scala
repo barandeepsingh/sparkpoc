@@ -23,7 +23,7 @@ object AirtelApp extends App {
     java.sql.Timestamp.valueOf(sdf.format(date))
   }
 
-  //val myDf = spark.read.csv("/Users/baran/Documents/spark-data/airtel.log")
+  //val myDf = spark.read.csv("spark-data/airtel.log")
   case class LogDetails(userId: String, sessionId: String, timestamp: Timestamp, currentTimestamp: Timestamp, status: String)
 
   myDS.createOrReplaceTempView("airtel")

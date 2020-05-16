@@ -13,7 +13,7 @@ object RowNumberDemo extends App {
 
   import spark.implicits._
 
-  val myRdd = spark.sparkContext.textFile("/Users/baran/Documents/spark-data/duplicates.txt").map(_.split(" "))
+  val myRdd = spark.sparkContext.textFile("spark-data/duplicates.txt").map(_.split(" "))
   val myDs = myRdd.map(entry => {
     MyClass(entry(0).toInt, entry(1))
   }).toDS()

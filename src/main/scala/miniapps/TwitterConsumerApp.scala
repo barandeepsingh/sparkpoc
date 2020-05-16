@@ -20,10 +20,10 @@ object TwitterConsumerApp extends App {
   //create context
   val ssc = new StreamingContext(sc, Seconds(10))
 
-  val consumerKey = "FyxIpNvlAregYrmRJKdMRGn0f"
-  val consumerSecret = "9EUPdPXi1WzKf6NTwryWtHlt8Ffk8965bdNkJCOghHim8q1IIO"
-  val accessToken = "91073134-ou7DEOMtcnutzjiEADzUmPCwdotVRMJ1LzvzH4Wc4"
-  val accessTokenSecret = "RkiZYbZ0d7TmonPAB3fpZgw2vniG1IgYvmMuxPDgJkqdL"
+  val consumerKey = ""
+  val consumerSecret = ""
+  val accessToken = ""
+  val accessTokenSecret = ""
 
 
   System.setProperty("twitter4j.oauth.consumerKey", consumerKey)

@@ -8,7 +8,7 @@ object AddColumnToDS extends App {
 
   import spark.implicits._
 
-  val movieRdd = spark.sparkContext.textFile("/Users/baran/Documents/spark-data/u.data").map(_.split("\t"))
+  val movieRdd = spark.sparkContext.textFile("spark-data/u.data").map(_.split("\t"))
   val movieDs = movieRdd.map(entry => {
     MovieRatings(entry(0).toInt, entry(2).toInt)
   }).toDS

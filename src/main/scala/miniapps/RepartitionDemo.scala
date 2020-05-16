@@ -40,7 +40,7 @@ object RepartitionDemo extends App {
   case class FakeData(id: Int, eventData: String, timeSt: Timestamp)
 
   myDs.write.partitionBy("day", "month", "year").
-    mode(SaveMode.Overwrite).save("/Users/baran/Documents/spark-data/my_dump/")
+    mode(SaveMode.Overwrite).save("spark-data/my_dump/")
   myDs.printSchema()
   myDs.show()
 

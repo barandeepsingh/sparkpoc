@@ -21,5 +21,4 @@ object MoviesDbCsvApp extends App {
 
   //spark.sql("select * from summerSlam").select("challenger").where("champion='Kofi'").show
 
-
 }

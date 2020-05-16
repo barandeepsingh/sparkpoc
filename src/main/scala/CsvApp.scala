@@ -9,8 +9,8 @@ object CsvApp extends App {
 
   spark.sparkContext.setLogLevel("FATAL")
 
-  val summerSlamRDD = spark.sparkContext.textFile("/Users/baran/Documents/spark-data/summerslam.csv")
-  val hellInACellRDD = spark.sparkContext.textFile("/Users/baran/Documents/spark-data/hell_in_a_cell.csv")
+  val summerSlamRDD = spark.sparkContext.textFile("spark-data/summerslam.csv")
+  val hellInACellRDD = spark.sparkContext.textFile("spark-data/hell_in_a_cell.csv")
   val summerSlamMappedRDD = summerSlamRDD.map { entry =>
     val cols = entry.split(",")
     PPV(challenger = cols(0), champion = cols(1), title = cols(2), "Summerslam")

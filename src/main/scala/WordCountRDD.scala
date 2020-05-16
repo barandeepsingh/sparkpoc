@@ -8,7 +8,7 @@ object WordCountRDD extends App {
   Logger.getLogger("org").setLevel(Level.ERROR)
   val sparkSession = SparkSession.builder().appName("WordCountRDD").master("local[*]").getOrCreate()
 
-  val data = sparkSession.sparkContext.textFile("/Users/baran/Documents/spark-data/wordcount.txt")
+  val data = sparkSession.sparkContext.textFile("spark-data/wordcount.txt")
 
   val allFlattenedWords = data.flatMap(_.split("\\s+")).map(_.toLowerCase)
 
@@ -18,7 +18,7 @@ object WordCountRDD extends App {
 
   //finalCollectedRdd.persist(StorageLevel.MEMORY_ONLY_SER_2)
   //println("Total Items " + finalCollectedRdd.count())
-  sortedRdd.collect().foreach(entry => println(entry._1 + " : " + entry._2))
+  sortedRdd.collect().take(3).foreach(entry => println(entry._1 + " : " + entry._2))
   //finalCollectedRdd.unpersist()
   spark.close()
 }

@@ -10,7 +10,7 @@ object XmlParserApp extends App {
   val df = spark.read
     .format("com.databricks.spark.xml")
     .option("rowTag", "person")
-    .load("/Users/baran/Documents/spark-data/persons.xml")
+    .load("spark-data/persons.xml")
 
 
   df.printSchema()

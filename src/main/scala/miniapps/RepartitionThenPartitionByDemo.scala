@@ -12,7 +12,7 @@ object RepartitionThenPartitionByDemo extends App {
   Logger.getLogger("org").setLevel(Level.OFF)
 
   val spark = SparkSession.builder().master("local[*]").appName("RepartitionThenPartitionByDemo").getOrCreate()
-  val myRdd = spark.sparkContext.textFile("/Users/baran/Documents/spark-data/repartitioning.txt").filter(!_.contains("id"))
+  val myRdd = spark.sparkContext.textFile("spark-data/repartitioning.txt").filter(!_.contains("id"))
 
   import spark.implicits._
 

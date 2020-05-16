@@ -8,7 +8,7 @@ object MapHashMapDemo extends App {
 
   import spark.implicits._
 
-  val myRdd = spark.sparkContext.textFile("/Users/baran/Documents/spark-data/test.txt")
+  val myRdd = spark.sparkContext.textFile("spark-data/test.txt")
 
   myRdd.toDF.show
 

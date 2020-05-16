@@ -1,0 +1,6 @@
+[   
+ 	{"name":"Baran", "age":30, "Gender":"M"},  
+    {"name":"Simran", "age":27, "Gender":"F"},
+    {"name":"Deeps", "age":30, "Gender":"M"},
+    {"name":"Mini", "age":31, "Gender":"F"} 
+]  

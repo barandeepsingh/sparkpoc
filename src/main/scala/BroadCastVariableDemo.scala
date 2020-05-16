@@ -9,7 +9,7 @@ object BroadCastVariableDemo extends App {
   Logger.getLogger("org").setLevel(Level.ERROR)
   val sparkSession = SparkSession.builder().appName("BroadCastVariableDemo").master("local[*]").getOrCreate()
 
-  val data = sparkSession.sparkContext.textFile("/Users/baran/Documents/spark-data/wordcount.txt")
+  val data = sparkSession.sparkContext.textFile("spark-data/wordcount.txt")
 
   val allFlattenedWords = data.flatMap(_.split("\\s+")).map(_.toLowerCase)
 

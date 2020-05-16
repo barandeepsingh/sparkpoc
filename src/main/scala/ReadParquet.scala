@@ -8,7 +8,7 @@ object ReadParquet extends App {
 
   Logger.getLogger("org").setLevel(Level.ERROR)
 
-  val myDs = spark.read.parquet("/Users/baran/Documents/spark-data/my_dump")
+  val myDs = spark.read.parquet("spark-data/my_dump")
 
   myDs.printSchema()
 

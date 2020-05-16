@@ -8,7 +8,7 @@ object LogParserDemo extends App {
   Logger.getLogger("org").setLevel(Level.OFF)
 
   val spark = SparkSession.builder().master("local[*]").appName("LogParserDemo").getOrCreate()
-  val logRdd = spark.sparkContext.textFile("/Users/baran/Documents/spark-data/log_dump.log").filter(countSubstring(_, ":-:") == 4)
+  val logRdd = spark.sparkContext.textFile("spark-data/log_dump.log").filter(countSubstring(_, ":-:") == 4)
 
   import spark.implicits._
 

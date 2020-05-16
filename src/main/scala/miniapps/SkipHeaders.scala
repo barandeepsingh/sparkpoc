@@ -10,7 +10,7 @@ object SkipHeaders extends App {
 
   spark.sparkContext.setLogLevel("ERROR")
 
-  val myDs = spark.read.csv("/Users/baran/Documents/spark-data/test_headers.csv")
+  val myDs = spark.read.csv("spark-data/test_headers.csv")
 
   val myDsWithRowNumber = myDs.withColumn("row_number", row_number().over(Window.orderBy(lit(1)))).withColumnRenamed("_c0", "Id").withColumnRenamed("_c1", "Name").withColumnRenamed("_c2", "Age")
 

@@ -9,7 +9,7 @@ object AadharApp extends App {
 
   import spark.implicits._
 
-  val aadharDS = spark.read.option("header", "true").option("inferSchema", "true").csv("/Users/baran/Documents/spark-data/aadhar.csv").as[Aadhaar]
+  val aadharDS = spark.read.option("header", "true").option("inferSchema", "true").csv("spark-data/aadhar.csv").as[Aadhaar]
   //Show report of Total Aadhaar's generated for each state
   val totalAadhaarGeneratedPerStateDF = spark.sql(
     """

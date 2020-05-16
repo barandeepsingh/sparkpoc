@@ -8,7 +8,7 @@ object JsonParserApp extends App {
   val spark = SparkSession.builder().master("local[*]").getOrCreate()
   Logger.getLogger("org").setLevel(Level.OFF)
 
-  val df = spark.read.option("multiLine", true).json("/Users/baran/Documents/spark-data/nested.json")
+  val df = spark.read.option("multiLine", true).json("spark-data/nested.json")
 
   df.show()
 

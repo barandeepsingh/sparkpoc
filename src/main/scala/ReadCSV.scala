@@ -7,7 +7,7 @@ object ReadCSV extends App {
 
   spark.sparkContext.setLogLevel("FATAL")
 
-  val myRdd = spark.sparkContext.textFile("/Users/baran/Documents/spark-data/testcsv.csv")
+  val myRdd = spark.sparkContext.textFile("spark-data/testcsv.csv")
 
   val splitRdd = myRdd.flatMap(_.split(",")).map(entry => entry.replaceAll("^\"|\"$", ""))
 

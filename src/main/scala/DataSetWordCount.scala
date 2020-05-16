@@ -9,7 +9,7 @@ object DataSetWordCount extends App {
 
   import sparkSession.implicits._
 
-  val data = sparkSession.read.text("/Users/baran/Documents/spark-data/wordcount.txt").as[String]
+  val data = sparkSession.read.text("spark-data/wordcount.txt").as[String]
 
 
   val words = data.flatMap(value => value.split("\\s+"))

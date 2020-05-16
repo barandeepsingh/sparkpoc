@@ -28,7 +28,7 @@ object LogParserApp extends App {
   sparkSession.conf.set("spark.io.compression.codec", "snappy")
   sparkSession.conf.set("spark.rdd.compress", "false")
   sparkSession.conf.set("spark.shuffle.compress", "true")
-  val logFile = sparkSession.sparkContext.textFile("/Users/baran/Documents/spark-data/log_dump.log")
+  val logFile = sparkSession.sparkContext.textFile("spark-data/log_dump.log")
 
 
   Logger.getLogger("org").setLevel(Level.ERROR)
