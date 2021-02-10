@@ -3,7 +3,7 @@ package miniapps
 import io.delta.tables._
 import org.apache.commons.io.FileUtils
 import org.apache.log4j.{Level, Logger}
-import org.apache.spark.sql.SparkSession
+import org.apache.spark.sql.{SaveMode, SparkSession}
 import org.apache.spark.sql.functions._
 
 import java.io.File
@@ -41,6 +41,7 @@ object SaveCsvWithFileName extends App {
   deltaTable.toDF
     .coalesce(1)
     .write
+    .mode(SaveMode.Overwrite)
     .format("com.databricks.spark.csv")
     .option("header", "true")
     .option("delimiter", ",")
