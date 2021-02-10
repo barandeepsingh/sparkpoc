@@ -1,15 +1,19 @@
 package miniapps
 
-import org.apache.log4j.{Level, Logger}
-import org.apache.spark.sql.{DataFrame, SparkSession}
-import org.apache.spark.sql.functions._
 import io.delta.tables._
 import org.apache.commons.io.FileUtils
+import org.apache.log4j.{Level, Logger}
+import org.apache.spark.sql.SparkSession
+import org.apache.spark.sql.functions._
 
 import java.io.File
+import java.time.temporal.ChronoUnit
+import java.time.{LocalDate, LocalDateTime}
 
 object SaveCsvWithFileName extends App {
   Logger.getLogger("org").setLevel(Level.ERROR)
+  val startTime = LocalDateTime.now()
+
   val spark = SparkSession.builder()
     .appName("Save with filename")
     .master("local[*]")
@@ -19,16 +23,19 @@ object SaveCsvWithFileName extends App {
 
   val dumpFolderPath = "/tmp/test-table/"
 
-  private val ratingsCsvDf: DataFrame = spark.read
+  private val ratingsCsvDfTemp = spark.read
     .option("header", "true")
-    .csv("spark-data/ratings.csv")
+    .csv("/Users/baran/Downloads/5m-records.csv")
 
+  private val ratingsCsvDf = ratingsCsvDfTemp.columns
+    .foldLeft(ratingsCsvDfTemp)((curr, n) => curr.withColumnRenamed(n, n.replaceAll("\\s", "_")))
 
   ratingsCsvDf.write.format("delta").save("/tmp/delta-table")
+
   val deltaTable = DeltaTable.forPath("/tmp/delta-table")
   deltaTable.update(
-    condition = expr("rating>3"),
-    set = Map("movieId" -> expr("123"))
+    condition = expr("Country='India'"),
+    set = Map("Country" -> expr("'Bharat'"))
   )
 
   deltaTable.toDF
@@ -45,9 +52,10 @@ object SaveCsvWithFileName extends App {
     .foreach(FileUtils.moveFile(_, new File(dumpFolderPath + "myCsv.csv")))
 
   deltaTable.delete()
+  val endTime = LocalDateTime.now()
+  val timeDiff = ChronoUnit.SECONDS.between(startTime, endTime)
 
-
-  println("Processing completed")
+  println("Processing completed in " + timeDiff + " seconds")
   spark.close()
 
   def getListOfFiles(dir: String): List[File] = {
