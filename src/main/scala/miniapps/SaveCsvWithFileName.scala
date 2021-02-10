@@ -17,6 +17,8 @@ object SaveCsvWithFileName extends App {
     .config("spark.sql.catalog.spark_catalog", "org.apache.spark.sql.delta.catalog.DeltaCatalog")
     .getOrCreate()
 
+  val dumpFolderPath = "/tmp/test-table/"
+
   private val ratingsCsvDf: DataFrame = spark.read
     .option("header", "true")
     .csv("spark-data/ratings.csv")
@@ -35,13 +37,11 @@ object SaveCsvWithFileName extends App {
     .format("com.databricks.spark.csv")
     .option("header", "true")
     .option("delimiter", ",")
-    .save("/tmp/test-table")
+    .save(dumpFolderPath)
 
-
-  val dumpFolderPath = "/tmp/test-table/"
 
   getListOfFiles(dumpFolderPath)
-    .filter(file => file.getName.endsWith(".csv"))
+    .filter(_.getName.endsWith(".csv"))
     .foreach(FileUtils.moveFile(_, new File(dumpFolderPath + "myCsv.csv")))
 
   deltaTable.delete()
