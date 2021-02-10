@@ -8,7 +8,7 @@ import org.apache.spark.sql.functions._
 
 import java.io.File
 import java.time.temporal.ChronoUnit
-import java.time.{LocalDate, LocalDateTime}
+import java.time.LocalDateTime
 
 object SaveCsvWithFileName extends App {
   Logger.getLogger("org").setLevel(Level.ERROR)
