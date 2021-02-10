@@ -30,7 +30,11 @@ object SaveCsvWithFileName extends App {
   private val ratingsCsvDf = ratingsCsvDfTemp.columns
     .foldLeft(ratingsCsvDfTemp)((curr, n) => curr.withColumnRenamed(n, n.replaceAll("\\s", "_")))
 
-  ratingsCsvDf.write.format("delta").save("/tmp/delta-table")
+  ratingsCsvDf
+    .write
+    .format("delta")
+    .mode(SaveMode.Overwrite)
+    .save("/tmp/delta-table")
 
   val deltaTable = DeltaTable.forPath("/tmp/delta-table")
   deltaTable.update(
