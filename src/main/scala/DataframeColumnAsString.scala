@@ -40,12 +40,6 @@ object DataframeColumnAsString extends App {
   val employeeIdsUsingSpliterator = StreamSupport.stream(splitItr, false).collect(Collectors.joining(","))
 
   println("Using spliterator "+employeeIdsUsingSpliterator)
-
-
-  //employeeNameIterator.
-  //    .toLocalIterator()
-  //    .forEachRemaining()
-
-
+  
   spark.close()
 }
